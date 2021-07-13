@@ -6,13 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 10:43:02 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/13 12:38:58 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/13 16:56:40 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_inialize_data(t_parse *parse_tab)
+t_parse	*ft_initialize_data(t_parse *parse_tab)
 {
 	parse_tab->rtn = 0; // output equal to 0
 	// conversions (cspdiuxX%)
@@ -24,9 +24,10 @@ void	ft_inialize_data(t_parse *parse_tab)
 	parse_tab->conv_x = 0;
 	parse_tab->conv_X = 0;
 	parse_tab->conv_pcnt = 0;
+	return (parse_tab);
 }
 
-void	ft_reset_data(t_parse *parse_tab) // reset conversions but not output
+t_parse	*ft_reset_data(t_parse *parse_tab) // reset conversions but not output
 {
 	parse_tab->conv_c = 0;
 	parse_tab->conv_s = 0;
@@ -36,6 +37,7 @@ void	ft_reset_data(t_parse *parse_tab) // reset conversions but not output
 	parse_tab->conv_x = 0;
 	parse_tab->conv_X = 0;
 	parse_tab->conv_pcnt = 0;
+	return (parse_tab);
 }
 
 void	ft_find_format(t_parse *parse_tab, int index)
@@ -64,7 +66,7 @@ void	ft_find_format(t_parse *parse_tab, int index)
 
 void	ft_redirect_to_converters(t_parse *parse_tab)
 {
-	if (parse_tab->conv_c == 1)
+	if (parse_tab->conv_c == 1 || parse_tab->conv_pcnt == 1)
 		ft_handle_char(parse_tab);
 	else if (parse_tab->conv_s == 1)
 		ft_handle_string(parse_tab);
@@ -77,11 +79,9 @@ void	ft_redirect_to_converters(t_parse *parse_tab)
 	else if (parse_tab->conv_u == 1)
 		ft_handle_unsigned_int(parse_tab);
 	else if (parse_tab->conv_x == 1)
-		ft_handle_hxd_number(parse_tab);
+		ft_handle_hxd_num(parse_tab);
 	else if (parse_tab->conv_X == 1)
-		ft_handle_capitalized_hxd_number(parse_tab);
-	else if (parse_tab->conv_pcnt == 1)
-		ft_handle_percent(parse_tab);
+		ft_handle_upper_hxd_num(parse_tab);
 }
 
 int	ft_printf(const char *format, ...)
@@ -93,7 +93,7 @@ int	ft_printf(const char *format, ...)
 	parse_tab = (t_parse*)malloc(sizeof(t_parse));
 	if (!parse_tab)
 		return (-1); // means something fucked up
-	ft_initialize_data(parse_tab); // initialize values to 0
+	parse_tab = ft_initialize_data(parse_tab); // initialize values to 0
 	parse_tab->format = format;
 	va_start(parse_tab->args, format);
 	i = 0;
@@ -102,7 +102,8 @@ int	ft_printf(const char *format, ...)
 		if (parse_tab->format[i] == '%') // indicates that a flag or conversion is present
 		{
 			ft_find_format(parse_tab, (int)(i + 1)); // TODO
-			ft_reset_data(parse_tab); // remet valeurs à 0
+			parse_tab = ft_reset_data(parse_tab); // remet valeurs à 0
+			i++;
 		}		
 		else
 		{

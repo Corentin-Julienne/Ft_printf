@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 10:46:45 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/13 11:47:20 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/13 16:25:15 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,29 @@ typedef struct s_parse
 	int			conv_pcnt;
 }    		   t_parse;
 
+// protos ft_printf.c
 int			ft_printf(const char *format, ...);
+t_parse		*ft_inialize_data(t_parse *parse_tab);
+t_parse		*ft_reset_data(t_parse *parse_tab);
+void		ft_find_format(t_parse *parse_tab, int index);
+void		ft_redirect_to_converters(t_parse *parse_tab);
 
+// protos conversions
+void		ft_handle_percent(t_parse *parse_tab);
+void		ft_handle_char(t_parse *parse_tab);
+void		ft_handle_void_pointer(t_parse *parse_tab);
+void		ft_handle_signed_int(t_parse *parse_tab);
+void		ft_handle_string(t_parse *parse_tab);
+void		ft_handle_unsigned_int(t_parse *parse_tab);
+void		ft_handle_hxd_num(t_parse *parse_tab);
+void		ft_handle_upper_hxd_num(t_parse *parse_tab);
 
-
-// void		ft_initialize_flaglist(t_flags *flag_tab);
-// void		ft_putnbr_base(int nbr, char *base);
-// void		ft_print_hexadecimal(t_flags *t_flags);
-// void		ft_print_capital_hexadecimal(t_flags *t_flags);
-// void		ft_print_int(t_flags *flag_tab);
-// void		ft_print_unsigned_int(t_flags *flag_tab);
-// void		ft_print_char(t_flags *flag_tab);
-// void		ft_print_string(t_flags *flag_tab);
-// void		ft_print_pointer_address(t_flags *flag_tab);
-// int			ft_zero_flag(t_flags *flag_tab, const char *format, int index);
-// int			ft_wildcard_flag(t_flags *flag_tab, const char *format, int index);
-// int			ft_minus_flag(t_flags *flag_tab, const char *format, int index);
-// int 		ft_point_flag(t_flags *flag_tab, const char *format, int index);
+// protos utils (to change when including libft with Makefile)
+void		ft_putnbr_base(long long nb, char *base);
+void		ft_putchar_fd(char c, int fd);
+void		ft_putnbr_fd(int n, int fd);
+void		ft_putstr_fd(char *s, int fd);
+size_t		ft_strlen(const char *s);
+char		*ft_itoa(int n);
 
 #endif
