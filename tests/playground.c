@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 14:55:13 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/13 14:59:39 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/14 15:36:32 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 
 int main(void)
 {
-	printf("is : %c", 's');
+	
+	printf("print that shit : %%%%");
 	
 	return (0);
 }

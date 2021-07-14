@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 10:43:02 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/14 13:32:55 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/14 15:38:01 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_find_format(t_parse *parse_tab, int index)
 	if (parse_tab->format[index] == 'c')
 		ft_handle_char(parse_tab);
 	else if (parse_tab->format[index] == '%')
-		ft_handle_char(parse_tab);
+		ft_handle_percent(parse_tab);
 	else if (parse_tab->format[index] == 's')
 		ft_handle_string(parse_tab);
 	else if (parse_tab->format[index] == 'p')
