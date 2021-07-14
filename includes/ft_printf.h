@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 10:46:45 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/13 16:25:15 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/14 13:28:23 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,14 @@ typedef struct s_parse
 {                        
     va_list		args;			// initialize variadic list
 	const char	*format;		//the string contains as arg
-	// return value
 	int			rtn;			// the return value
-	// all type of conversions (cspdiuxX%)
-	int			conv_c;
-	int			conv_s;
-	int			conv_p;
-	int			conv_d;
-	int			conv_i;
-	int			conv_u;
-	int			conv_x;
-	int			conv_X;
-	int			conv_pcnt;
+	int			i;				// iterator
 }    		   t_parse;
 
 // protos ft_printf.c
 int			ft_printf(const char *format, ...);
-t_parse		*ft_inialize_data(t_parse *parse_tab);
-t_parse		*ft_reset_data(t_parse *parse_tab);
+t_parse		*ft_inialize_data(t_parse *parse_tab, const char *format);
 void		ft_find_format(t_parse *parse_tab, int index);
-void		ft_redirect_to_converters(t_parse *parse_tab);
 
 // protos conversions
 void		ft_handle_percent(t_parse *parse_tab);

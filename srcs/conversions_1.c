@@ -6,12 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 12:13:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/13 16:47:17 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/14 13:17:47 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdarg.h>
 
 // conversions (cspdiuxX%)
 
