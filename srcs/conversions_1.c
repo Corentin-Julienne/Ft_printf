@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 12:13:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/14 15:37:35 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/15 12:41:13 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,19 @@ void	ft_handle_string(t_parse *parse_tab)
 void	ft_handle_void_pointer(t_parse *parse_tab)
 {
 	unsigned long	ptn;
+	
 	ptn = (unsigned long)va_arg(parse_tab->args, void*);
-	ft_putnbr_fd(ptn, 1);
+	parse_tab->rtn = parse_tab->rtn + ft_intlen_base(ptn, 16);
+	ft_putnbr_base(ptn, "0123456789abcdef");
 }
 
 void	ft_handle_signed_int(t_parse *parse_tab)
 {
 	int		res;
-	size_t	num_len;
+	size_t	numlen;
 	
 	res = va_arg(parse_tab->args, int);
-	num_len = ft_strlen(ft_itoa(res));
-	parse_tab->rtn = parse_tab->rtn + num_len;
+	numlen = ft_strlen(ft_itoa(res));
+	parse_tab->rtn = parse_tab->rtn + numlen;
 	ft_putnbr_fd(res, 1);
 }

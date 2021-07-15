@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 12:26:28 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/14 13:37:59 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/15 12:42:08 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 void	ft_handle_unsigned_int(t_parse *parse_tab)
 {
 	unsigned long	res;
+	size_t			numlen;
 	
 	res = va_arg(parse_tab->args, unsigned long);
+	numlen = ft_strlen(ft_itoa(res));
+	parse_tab->rtn = parse_tab->rtn + numlen;
 	ft_putnbr_fd(res, 1);
 }
 
@@ -25,7 +28,8 @@ void	ft_handle_hxd_num(t_parse *parse_tab)
 	unsigned long	res;
 
 	res = va_arg(parse_tab->args, unsigned long);
-	ft_putnbr_fd(res, 1);
+	parse_tab->rtn = parse_tab->rtn + ft_intlen_base(res, 16);
+	ft_putnbr_base(res, "0123456789abcdef");
 }
 
 void	ft_handle_upper_hxd_num(t_parse *parse_tab)
@@ -33,5 +37,6 @@ void	ft_handle_upper_hxd_num(t_parse *parse_tab)
 	unsigned long	res;
 
 	res = va_arg(parse_tab->args, unsigned long);
-	ft_putnbr_fd(res, 1);
+	parse_tab->rtn = parse_tab->rtn + ft_intlen_base(res, 16);
+	ft_putnbr_base(res, "0123456789ABCDEF");
 }
