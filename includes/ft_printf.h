@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 10:46:45 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/15 11:55:02 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/15 14:37:52 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void		ft_handle_upper_hxd_num(t_parse *parse_tab);
 // protos utils (to change when including libft with Makefile)
 void		ft_putnbr_base(long long nb, char *base);
 void		ft_putchar_fd(char c, int fd);
-void		ft_putnbr_fd(int n, int fd);
+void		ft_putnbr_fd(long long n, int fd);
 void		ft_putstr_fd(char *s, int fd);
 size_t		ft_strlen(const char *s);
-char		*ft_itoa(int n);
+char		*ft_itoa(long long n);
 size_t		ft_intlen_base(unsigned int num, size_t base);
 
 #endif

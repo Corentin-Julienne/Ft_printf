@@ -6,28 +6,26 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 12:58:49 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/13 16:24:22 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/15 14:37:29 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static long long	ft_int_sizer(int n)
+static long long	ft_int_sizer(long long n)
 {
 	long long	size;
-	long long	long_n;
 
 	size = 1;
-	long_n = n;
-	if (long_n < 0)
+	if (n < 0)
 	{
 		size++;
-		long_n = (long_n * (-1));
+		n = (n * (-1));
 	}
-	while (long_n >= 10)
+	while (n >= 10)
 	{
 		size++;
-		long_n = long_n / 10;
+		n = n / 10;
 	}
 	return (size);
 }
@@ -46,41 +44,39 @@ static long long	ft_power(long long len_integer, long long i)
 	return (multiplicator);
 }
 
-static char	*ft_string_fulfiller(char *str, long long long_n, long long len)
+static char	*ft_string_fulfiller(char *str, long long n, long long len)
 {
 	long long	i;
 	long long	multiplicator;
 
 	i = 0;
-	if (long_n < 0)
+	if (n < 0)
 	{
 		str[0] = '-';
-		long_n = long_n * (-1);
+		n = n * (-1);
 		i++;
 	}
 	str[len] = '\0';
 	multiplicator = ft_power(len, i);
 	while (len > i)
 	{
-		str[i] = ((long_n / multiplicator) + '0');
-		long_n = long_n % multiplicator;
+		str[i] = ((n / multiplicator) + '0');
+		n = n % multiplicator;
 		multiplicator = (multiplicator / 10);
 		i++;
 	}
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long long n)
 {
 	char			*int_string;
-	long long int	long_n;
 	long long int	len_integer;
 
-	long_n = n;
 	len_integer = ft_int_sizer(n);
 	int_string = malloc((len_integer + 1) * (sizeof(char)));
 	if (!(int_string))
 		return (NULL);
-	int_string = ft_string_fulfiller(int_string, long_n, len_integer);
+	int_string = ft_string_fulfiller(int_string, n, len_integer);
 	return (int_string);
 }

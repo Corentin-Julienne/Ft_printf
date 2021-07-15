@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 16:21:08 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/15 12:44:07 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/15 16:31:18 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	main(void)
 	// // tests with unsigned ints (u)
 	unsigned int	ex_uint = 0;
 	// tests with small letters hexadecimal numbers (x)
-
+	unsigned int	ex_hxd = 0;
 	// test with capital letters hexadecimal numbers (X)
-
+	unsigned int	ex_hxd_2 = 0;
 	// // tests with pointer adresses (p)
 	
 
@@ -213,7 +213,7 @@ int	main(void)
 	unsigned int number_2 = rand();
 	stop = 0;
 	printf("Testing with unsigned int\n\n");
-	while (ex_uint <= 2147483646)
+	while (ex_uint <= 4294967295)
 	{
 		res_printf = printf("This is : %u\n", ex_uint);
 		res_ft_printf = ft_printf("This is : %u\n", ex_uint);
@@ -276,11 +276,132 @@ int	main(void)
 
 	printf("Testing with hexadecimal in normal letters (x)\n\n");
 
+	unsigned int number_3 = rand();
+	stop = 0;
+	printf("Testing with unsigned int\n\n");
+	while (ex_hxd <= 4294967295)
+	{
+		res_printf = printf("This is : %x\n", ex_hxd);
+		res_ft_printf = ft_printf("This is : %x\n", ex_hxd);
+		printf("\n");
+		if (res_ft_printf != res_printf)
+		{
+		errors++;
+		printf("Error above!!!\n");
+		}
+		ex_hxd = ex_hxd + number_3;
+		number_3 = rand();
+		stop++;
+		if (stop > 666)
+			break;
+	}
+	res_printf = printf("This is : %x\n", ex_hxd);
+	res_ft_printf = ft_printf("This is : %x\n", ex_hxd);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+	}
+	printf("\n");
+	
+	// special cases
+
+	ex_hxd = 0;
+	res_printf = printf("This is : %x\n", ex_hxd);
+	res_ft_printf = ft_printf("This is : %x\n", ex_hxd);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+	}
+	printf("\n");
+
+	ex_hxd = 1;
+	res_printf = printf("This is : %x\n", ex_hxd);
+	res_ft_printf = ft_printf("This is : %x\n", ex_hxd);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+	}
+	printf("\n");
+
+	ex_hxd = 4294967295;
+	res_printf = printf("This is : %x\n", ex_hxd);
+	res_ft_printf = ft_printf("This is : %x\n", ex_hxd);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+	}
+	printf("\n");
+	
+
 	printf("\n\n");
 
 	// testing with hexadecimal in upper letters (X)
 
-	printf("Testing with hexadecimal in upper letters (x)\n\n");
+	printf("Testing with hexadecimal in upper letters (X)\n\n");
+
+	unsigned int number_4 = rand();
+	stop = 0;
+	printf("Testing with unsigned int\n\n");
+	while (ex_hxd_2 <= 4294967295)
+	{
+		res_printf = printf("This is : %X\n", ex_hxd_2);
+		res_ft_printf = ft_printf("This is : %X\n", ex_hxd_2);
+		printf("\n");
+		if (res_ft_printf != res_printf)
+		{
+		errors++;
+		printf("Error above!!!\n");
+		}
+		ex_hxd_2 = ex_hxd_2 + number_4;
+		number_4 = rand();
+		stop++;
+		if (stop > 666)
+			break;
+	}
+	res_printf = printf("This is : %X\n", ex_hxd_2);
+	res_ft_printf = ft_printf("This is : %X\n", ex_hxd_2);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+	}
+	printf("\n");
+
+	// special cases
+
+	ex_hxd_2 = 0;
+	res_printf = printf("This is : %X\n", ex_hxd_2);
+	res_ft_printf = ft_printf("This is : %X\n", ex_hxd_2);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+	}
+	printf("\n");
+
+	ex_hxd_2 = 1;
+	res_printf = printf("This is : %X\n", ex_hxd_2);
+	res_ft_printf = ft_printf("This is : %X\n", ex_hxd_2);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+	}
+	printf("\n");
+
+	ex_hxd_2 = 4294967295;
+	res_printf = printf("This is : %X\n", ex_hxd_2);
+	res_ft_printf = ft_printf("This is : %X\n", ex_hxd_2);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+	}
+	printf("\n");
 
 	printf("\n\n");
 
@@ -288,7 +409,75 @@ int	main(void)
 
 	printf("Testing with pointer addresses (p)\n\n");
 
+	void	*ptn = "stuff";
+	res_printf =       printf("This is : %p\n", ptn);
+	res_ft_printf = ft_printf("This is : %p\n", ptn);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+		printf("printf : %i ::::: ft_printf : %i", res_printf, res_ft_printf);
+	}
+	printf("\n");
+
+	ptn = NULL;
+	res_printf =       printf("This is : %p\n", ptn);
+	res_ft_printf = ft_printf("This is : %p\n", ptn);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+		printf("printf : %i ::::: ft_printf : %i", res_printf, res_ft_printf);
+	}
+	printf("\n");
+
+	ptn = "";
+	res_printf =       printf("This is : %p\n", ptn);
+	res_ft_printf = ft_printf("This is : %p\n", ptn);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+		printf("printf : %i ::::: ft_printf : %i", res_printf, res_ft_printf);
+	}
+	printf("\n");
+
+	ptn = "            ";
+	res_printf =       printf("This is : %p\n", ptn);
+	res_ft_printf = ft_printf("This is : %p\n", ptn);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+		printf("printf : %i ::::: ft_printf : %i", res_printf, res_ft_printf);
+	}
+	printf("\n");
+
+	ptn = "This is a normal string";
+	res_printf =       printf("This is : %p\n", ptn);
+	res_ft_printf = ft_printf("This is : %p\n", ptn);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+		printf("printf : %i ::::: ft_printf : %i", res_printf, res_ft_printf);
+	}
+	printf("\n");
+
+	ptn = "This is a normal string but very vsgjsroijgoisjior   rsrg srkj gois oiv soiur voisab iovbndauhvoijasoinkjxdnoiugjiosejivjnsdiufhuhouhiuhhudhdd  vs dvs vb  dv sd b xd b   s";
+	res_printf =       printf("This is : %p\n", ptn);
+	res_ft_printf = ft_printf("This is : %p\n", ptn);
+	if (res_ft_printf != res_printf)
+	{
+		errors++;
+		printf("Error above!!!\n");
+		printf("printf : %i ::::: ft_printf : %i", res_printf, res_ft_printf);
+	}
+	printf("\n");	
+
 	printf("\n\n");
+
+	// end of testing procedure
 	
 	printf("Fin de la procedure de test !\n");
 	if (errors == 0)
