@@ -6,18 +6,15 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 10:48:53 by cjulienn          #+#    #+#              #
-#    Updated: 2021/07/13 10:49:19 by cjulienn         ###   ########.fr        #
+#    Updated: 2021/07/16 15:54:51 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 SRCS = ./srcs/ft_printf.c \
-	   ./srcs/ft_find_format.c \
-	   ./srcs/ft_eval_flags.c \
 	   ./srcs/ft_conversions_1.c \
 	   ./srcs/ft_conversions_2.c \
-	   ./srcs/ft_conversions_utils.c 
 
 OBJS = ${SRCS:.c=.o}
 
