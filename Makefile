@@ -6,15 +6,15 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 10:48:53 by cjulienn          #+#    #+#              #
-#    Updated: 2021/07/16 15:54:51 by cjulienn         ###   ########.fr        #
+#    Updated: 2021/07/16 16:14:46 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 SRCS = ./srcs/ft_printf.c \
-	   ./srcs/ft_conversions_1.c \
-	   ./srcs/ft_conversions_2.c \
+	   ./srcs/conversions_1.c \
+	   ./srcs/conversions_2.c \
 
 OBJS = ${SRCS:.c=.o}
 
@@ -35,8 +35,8 @@ AR = ar -rcs
 all:	${NAME}
 
 ${NAME}:	$(OBJS)
-		$(MAKE) all -C $(LIBFT_PATH)
-		$(AR) $(NAME) $(OBJS) $(LIBFT_PATH)$(LIBFT_NAME)
+	$(MAKE) -C $(LIBFT_PATH)
+	$(AR) $(NAME) $(OBJS) $(LIBFT_PATH)$(LIBFT_NAME)
 		
 clean:	
 	$(MAKE) clean -C ${LIBFT_PATH}
