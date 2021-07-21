@@ -6,46 +6,50 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 10:48:53 by cjulienn          #+#    #+#              #
-#    Updated: 2021/07/16 16:14:46 by cjulienn         ###   ########.fr        #
+#    Updated: 2021/07/21 16:58:51 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = ./srcs/ft_printf.c \
-	   ./srcs/conversions_1.c \
-	   ./srcs/conversions_2.c \
+SRCS = ./srcs/conversions_1.c \
+	./srcs/conversions_2.c \
+	./srcs/ft_printf.c \
+	./libft/ft_intlen_base.c \
+	./libft/ft_lltoa.c \
+	./libft/ft_putchar_fd.c \
+	./libft/ft_putlnbr_fd.c \
+	./libft/ft_putlnbr_base.c \
+	./libft/ft_putstr_fd.c \
+	./libft/ft_strlen.c
 
 OBJS = ${SRCS:.c=.o}
 
-INCLUDES = ./includes/
-
-LIBFT_PATH = ./libft/
-LIBFT_NAME = libft.a
+INCLUDES_PATH = includes/ft_printf.h
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I.$(INCLUDES)
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES_PATH)
 
 RM = rm -f
-AR = ar -rcs
 
-.c.o:
+.c.o :
 	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
 
-all:	${NAME}
+$(NAME) : $(OBJS)
+	ar -rc $(NAME) $(OBJS)
+	ranlib $(NAME)
+	@echo libftprintf.a successfully made
 
-${NAME}:	$(OBJS)
-	$(MAKE) -C $(LIBFT_PATH)
-	$(AR) $(NAME) $(OBJS) $(LIBFT_PATH)$(LIBFT_NAME)
-		
-clean:	
-	$(MAKE) clean -C ${LIBFT_PATH}
-	${RM} ${OBJS}
+all: $(NAME)
 
-fclean:	clean
-	$(MAKE) fclean -C $(LIBFT_PATH)
-	${RM} ${NAME}
-		
-re:	fclean all
+clean :
+	$(RM) $(OBJS)
 
-.PHONY:	all clean fclean re
+fclean : clean
+	$(RM) $(NAME)
+
+re : fclean all
+
+temp : all clean
+
+.PHONY : all clean fclean re temp

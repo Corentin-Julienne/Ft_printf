@@ -6,12 +6,11 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 12:13:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/16 15:50:10 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/21 15:56:39 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h>
 
 void	ft_handle_char(t_parse *parse_tab)
 {
@@ -47,7 +46,6 @@ void	ft_handle_void_pointer(t_parse *parse_tab)
 	ft_putstr_fd(prefix, 1);
 	parse_tab->rtn += 2;
 	ptn = (unsigned long)va_arg(parse_tab->args, void *);
-	printf("%lu", ptn);
 	parse_tab->rtn = parse_tab->rtn + (int)ft_intlen_base(ptn, 16);
 	ft_putlnbr_base(ptn, "0123456789abcdef");
 }
