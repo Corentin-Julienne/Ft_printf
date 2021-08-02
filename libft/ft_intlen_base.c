@@ -6,13 +6,13 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 15:37:50 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/16 15:46:29 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/07/23 13:37:17 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_intlen_base(unsigned int num, size_t base)
+size_t	ft_intlen_base(unsigned long long num, size_t base)
 {
 	size_t	res;
 

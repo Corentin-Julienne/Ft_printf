@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 12:13:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/21 15:56:39 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/08/02 13:26:57 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,27 @@ void	ft_handle_string(t_parse *parse_tab)
 
 void	ft_handle_void_pointer(t_parse *parse_tab)
 {
-	unsigned long	ptn;
-	char			*prefix;
+	unsigned long		ptn;
+	char				*prefix;
 
 	prefix = "0x";
 	ft_putstr_fd(prefix, 1);
 	parse_tab->rtn += 2;
-	ptn = (unsigned long)va_arg(parse_tab->args, void *);
-	parse_tab->rtn = parse_tab->rtn + (int)ft_intlen_base(ptn, 16);
+	ptn = va_arg(parse_tab->args, unsigned long);
+	parse_tab->rtn = parse_tab->rtn + ft_intlen_base(ptn, 16);
 	ft_putlnbr_base(ptn, "0123456789abcdef");
 }
 
 void	ft_handle_signed_int(t_parse *parse_tab)
 {
 	int		res;
+	char	*res_to_a;
 	size_t	numlen;
 
 	res = va_arg(parse_tab->args, int);
-	numlen = ft_strlen(ft_lltoa(res));
+	res_to_a = ft_lltoa(res);
+	numlen = ft_strlen(res_to_a);
 	parse_tab->rtn = parse_tab->rtn + numlen;
 	ft_putlnbr_fd(res, 1);
+	free(res_to_a);
 }

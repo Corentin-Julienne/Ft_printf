@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 10:46:45 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/21 15:56:31 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/08/02 13:30:56 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 # include <stdarg.h> 
 # include "../libft/libft.h"
 
-typedef struct s_parse                       
-{                        
-    va_list		args;
+typedef struct s_parse
+{
+	va_list		args;
 	const char	*format;
 	int			rtn;
 	int			i;
-}    		   t_parse;
+}				t_parse;
 
 int			ft_printf(const char *format, ...);
 t_parse		*ft_inialize_data(t_parse *parse_tab, const char *format);
