@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 10:43:02 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/07/21 15:56:49 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/08/04 15:56:33 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,32 @@ void	ft_find_format(t_parse *parse_tab, int index)
 		ft_handle_upper_hxd_num(parse_tab);
 }
 
-int	ft_printf(const char *format, ...)
+t_parse	*ft_create_parse_tab(const char *format)
 {
 	t_parse		*parse_tab;
 
 	parse_tab = (t_parse *)malloc(sizeof(t_parse));
 	if (!parse_tab)
-		return (-1);
+		return (NULL);
 	parse_tab = ft_initialize_data(parse_tab, format);
+	return (parse_tab);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	t_parse		*parse_tab;
+
+	parse_tab = ft_create_parse_tab(format);
+	if (!parse_tab)
+		return (-1);
 	va_start(parse_tab->args, format);
 	while (parse_tab->format[parse_tab->i])
 	{
 		if (parse_tab->format[parse_tab->i] == '%')
 		{
 			ft_find_format(parse_tab, parse_tab->i + 1);
+			if (parse_tab->rtn == -1)
+				return (-1);
 			parse_tab->i++;
 		}		
 		else

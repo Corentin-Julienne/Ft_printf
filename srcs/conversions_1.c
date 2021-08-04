@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 12:13:58 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/08/02 13:26:57 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/08/04 15:45:32 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ void	ft_handle_signed_int(t_parse *parse_tab)
 
 	res = va_arg(parse_tab->args, int);
 	res_to_a = ft_lltoa(res);
+	if (!res_to_a)
+	{
+		parse_tab->rtn = -1;
+		return ;
+	}
 	numlen = ft_strlen(res_to_a);
 	parse_tab->rtn = parse_tab->rtn + numlen;
 	ft_putlnbr_fd(res, 1);

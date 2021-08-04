@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 10:46:45 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/08/02 13:30:56 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/08/04 15:57:11 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_parse
 
 int			ft_printf(const char *format, ...);
 t_parse		*ft_inialize_data(t_parse *parse_tab, const char *format);
+t_parse		*ft_create_parse_tab(const char *format);
 void		ft_find_format(t_parse *parse_tab, int index);
 void		ft_handle_percent(t_parse *parse_tab);
 void		ft_handle_char(t_parse *parse_tab);
