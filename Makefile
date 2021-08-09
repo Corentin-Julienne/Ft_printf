@@ -6,7 +6,7 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 10:48:53 by cjulienn          #+#    #+#              #
-#    Updated: 2021/08/06 15:39:58 by cjulienn         ###   ########.fr        #
+#    Updated: 2021/08/09 09:46:41 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,4 @@ fclean : clean
 
 re : fclean all
 
-temp : all clean
-
-.PHONY : all clean fclean re temp
+.PHONY : all clean fclean re
