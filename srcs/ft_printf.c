@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 10:43:02 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/08/04 15:56:33 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/08/06 15:36:51 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,15 @@ t_parse	*ft_create_parse_tab(const char *format)
 	return (parse_tab);
 }
 
-int	ft_printf(const char *format, ...)
+void	ft_printer(t_parse *parse_tab)
 {
-	t_parse		*parse_tab;
-
-	parse_tab = ft_create_parse_tab(format);
-	if (!parse_tab)
-		return (-1);
-	va_start(parse_tab->args, format);
 	while (parse_tab->format[parse_tab->i])
 	{
 		if (parse_tab->format[parse_tab->i] == '%')
 		{
 			ft_find_format(parse_tab, parse_tab->i + 1);
 			if (parse_tab->rtn == -1)
-				return (-1);
+				return ;
 			parse_tab->i++;
 		}		
 		else
@@ -77,7 +71,26 @@ int	ft_printf(const char *format, ...)
 		}	
 		parse_tab->i++;
 	}
+}
+
+int	ft_printf(const char *format, ...)
+{
+	t_parse		*parse_tab;
+	int			rtn_val;
+
+	parse_tab = ft_create_parse_tab(format);
+	if (!parse_tab)
+		return (-1);
+	va_start(parse_tab->args, format);
+	ft_printer(parse_tab);
+	if (parse_tab->rtn == -1)
+	{
+		rtn_val = -1;
+		free(parse_tab);
+		return (rtn_val);
+	}
 	va_end(parse_tab->args);
+	rtn_val = parse_tab->rtn;
 	free(parse_tab);
-	return (parse_tab->rtn);
+	return (rtn_val);
 }

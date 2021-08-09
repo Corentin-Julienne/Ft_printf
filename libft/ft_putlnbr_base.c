@@ -6,7 +6,7 @@
 /*   By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 15:35:43 by cjulienn          #+#    #+#             */
-/*   Updated: 2021/08/02 13:25:25 by cjulienn         ###   ########.fr       */
+/*   Updated: 2021/08/06 15:27:29 by cjulienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ static void	ft_base_converter(unsigned long nb, char *base, unsigned long b_s)
 void	ft_putlnbr_base(unsigned long nb, char *base)
 {
 	unsigned long		base_size;
-	int					res;
 
 	base_size = 0;
-	res = 0;
 	while (base[base_size] != '\0')
 		base_size++;
 	ft_base_converter(nb, base, base_size);

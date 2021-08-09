@@ -6,7 +6,7 @@
 #    By: cjulienn <cjulienn@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/13 10:48:53 by cjulienn          #+#    #+#              #
-#    Updated: 2021/07/21 16:58:51 by cjulienn         ###   ########.fr        #
+#    Updated: 2021/08/06 15:39:58 by cjulienn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS = ./srcs/conversions_1.c \
 
 OBJS = ${SRCS:.c=.o}
 
-INCLUDES_PATH = includes/ft_printf.h
+INCLUDES_PATH = includes/*
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES_PATH)
